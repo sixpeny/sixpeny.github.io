@@ -1,0 +1,16 @@
+@font-face {
+    font-family:'arzhu';
+    src:url('/font/candy.ttf');
+    font-display:swap
+}
+h1#site-title {
+    font-family:arzhu!important
+}
+span#subtitle {
+    font-family:arzhu!important
+}
+a#site-name {
+    font-family:arzhu!important
+}
+
+

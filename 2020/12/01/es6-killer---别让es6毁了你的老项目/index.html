@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>es6-killer---别让es6毁了你的老项目！！！ | 七仔のBLOG</title><meta name="keywords" content="es6"><meta name="author" content="七仔"><meta name="copyright" content="七仔"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="es6-killer—别让es6毁了你的老项目！！！前言这是转自我们公司的一个有趣的人在完成任务的时候所写的，在我的知乎点赞里有这篇文章先放插件链接： github:点击这npm：点击这 前段日子我的leader神秘兮兮的告诉了我一个神秘的任务，他告诉我说只要完成，就可以升职加薪，走向人生巅峰…（当然这是虚构情节）废话不多说，到底是什么任务需要做呢？没错，就是检测老项目(非VUE项目)中的es6语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6-killer---别让es6毁了你的老项目！！！">
+<meta property="og:url" content="http://example.com/2020/12/01/es6-killer---%E5%88%AB%E8%AE%A9es6%E6%AF%81%E4%BA%86%E4%BD%A0%E7%9A%84%E8%80%81%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="七仔のBLOG">
+<meta property="og:description" content="es6-killer—别让es6毁了你的老项目！！！前言这是转自我们公司的一个有趣的人在完成任务的时候所写的，在我的知乎点赞里有这篇文章先放插件链接： github:点击这npm：点击这 前段日子我的leader神秘兮兮的告诉了我一个神秘的任务，他告诉我说只要完成，就可以升职加薪，走向人生巅峰…（当然这是虚构情节）废话不多说，到底是什么任务需要做呢？没错，就是检测老项目(非VUE项目)中的es6语">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/27/MecWBAdu2yGxog1.jpg">
+<meta property="article:published_time" content="2020-11-30T17:16:53.000Z">
+<meta property="article:modified_time" content="2021-02-26T17:32:21.773Z">
+<meta property="article:author" content="七仔">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/27/MecWBAdu2yGxog1.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/b.png"><link rel="canonical" href="http://example.com/2020/12/01/es6-killer---%E5%88%AB%E8%AE%A9es6%E6%AF%81%E4%BA%86%E4%BD%A0%E7%9A%84%E8%80%81%E9%A1%B9%E7%9B%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: {"text":"I,LOVE,YOU","fontSize":"15px"},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-27 01:32:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/addCSS/scroll.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/addCSS/yutang.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/addCSS/common.css"><link rel="stylesheet" href="css/addCSS/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/css/font-awesome-animation.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@master/Hexo/css/iconfont.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@3.0/addCSS/cusor.css"><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2021/01/24/EK2LdqGmYbTNoOQ.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home faa-pulse animated"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags faa-shake animated"></i><span> 标签</span></a></li><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive faa-shake animated"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open faa-shake animated"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-motorcycle faa-tada animated"></i><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/game/"><i class="fa-fw fas  fa-gamepad faa-float animated"></i><span> 游戏</span></a></li><li><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-camera-retro faa-float animated"></i><span> 相册</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book faa-float animated"></i><span> 书单</span></a></li><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube faa-float animated"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-coffee  faa-tada animated"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heartbeat faa-pulse animated"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2021/02/27/MecWBAdu2yGxog1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">七仔のBLOG</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home faa-pulse animated"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags faa-shake animated"></i><span> 标签</span></a></li><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive faa-shake animated"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open faa-shake animated"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-motorcycle faa-tada animated"></i><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/game/"><i class="fa-fw fas  fa-gamepad faa-float animated"></i><span> 游戏</span></a></li><li><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-camera-retro faa-float animated"></i><span> 相册</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fas fa-book faa-float animated"></i><span> 书单</span></a></li><li><a class="site-page" href="/bangumis/"><i class="fa-fw fab fa-youtube faa-float animated"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-coffee  faa-tada animated"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heartbeat faa-pulse animated"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">es6-killer---别让es6毁了你的老项目！！！</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-30T17:16:53.000Z" title="发表于 2020-12-01 01:16:53">2020-12-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-26T17:32:21.773Z" title="更新于 2021-02-27 01:32:21">2021-02-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E4%B9%A0%E7%BB%8F%E5%8E%86/">实习经历</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="es6-killer—别让es6毁了你的老项目！！！"><a href="#es6-killer—别让es6毁了你的老项目！！！" class="headerlink" title="es6-killer—别让es6毁了你的老项目！！！"></a>es6-killer—别让es6毁了你的老项目！！！</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>这是转自我们公司的一个有趣的人在完成任务的时候所写的，在我的知乎点赞里有这篇文章</strong><br>先放插件链接：</p>
+<p>github:<br><a target="_blank" rel="noopener" href="https://github.com/lenovo-filez/es6-killer">点击这</a><br>npm：<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/es6-killer">点击这</a></p>
+<p>前段日子我的leader神秘兮兮的告诉了我一个神秘的任务，他告诉我说只要完成，就可以升职加薪，走向人生巅峰…（当然这是虚构情节）废话不多说，到底是什么任务需要做呢？没错，就是检测老项目(非VUE项目)中的es6语法，并且像揪出混蛋一样的揪出他们。为什么会有这样的需求产生呢？那当然是：</p>
+<p>神奇的IE浏览器<br>IE是一个相当神奇的浏览器，令众多前端开发者脑壳痛，恨不得将IE从世界上删除，对IE的兼容与适配一次一次挑战着前端开发者的耐心。那怎么办呢，还是得屈服于IE。于是乎，我们的老项目在一些IE浏览器上发生一些令人烦躁的错误，一些常见的es6语法就会导致项目在IE浏览器上发生崩溃。（老项目心声：我太难了……）例如，我们常常将一些变量定义时用const或者let定义，亦或是使用了一些箭头函数，一些版本稍微低一些的IE浏览器就罢工了，想要造反。为了安抚‘民心’，我们只能在老项目里禁用es6语法。但是，人总有手滑或者粗心的时候，一个不小心，es6语法又写上去了，在某一块功能，项目就又挺不住了，我们就又得去一点点找，浪费了大量的时间和精力。</p>
+<p>那我们就去想想办法去会会这个问题吧。</p>
+<p>ES-check<br>起初给出了三种实现方案：</p>
+<p>AST抽象语法树<br>自己进行正则校验<br>查找现有包的实现<br>经过调研，AST语法树（abstract syntax code，AST），作为源代码的抽象语法结构的树状表示，树上的每个节点都表示源代码中的一种结构，这所以说是抽象的，是因为抽象语法树并不会表示出真实语法出现的每一个细节。这种抽象的概念对于我而言很难去熟练地掌握运用，于是去社区上去找相关的解析器来生成对应的语法树，但是大批量的代码导入解析也是一个相当繁琐的过程，遂放弃这一方法。</p>
+<p>自己进行正则校验同样面临着类似的挑战，如何识别es6语法光凭几个正则匹配难以覆盖到整个项目里去，而且大量的代码文件去一一进行正则匹配也相当的低效，于是我注意到了一个好东西：Acorn。</p>
+<p>按照 Acorn 作者的说法，当时造这个轮子更多只是好玩，速度可以和 Esprima 媲（Esprima 是很经典的一个解析器，Acorn 在它之后诞生），但是实现代码更少。其中比较关键的点是这两个解析器出来的 AST 结果(对，只是 AST，tokens 不一样)都是符合 The Estree Spec 规范(这是 Mozilla 的工程师给出的 SpiderMonkey 引擎输出的 JavaScript AST 的规范文档，也可以参考：SpiderMonkey in MDN)的，也就是得到的结果在很大部分上是兼容的。</p>
+<p>现在很出名的 Webpack 解析代码时用的也是 Acorn。</p>
+<p>于是查找到了使用Acorn解析器的插件：es-check</p>
+<p>此插件需使用命令行驱动，如下</p>
+<p>es-check es5 ‘./vendor/js/<em>.js’ ‘./dist/**/</em>.js’<br>使用起来也蛮方便，但是就在我使用起来沾沾自喜的时候，新的问题出现了：扫描出来的es6语法实在是太多了，大部分是来自于node_modules中的文件，虽然有–not参数可以配置忽略文件，如果忽略的文件过多–not也很繁琐还有输错的可能，而且我修改了哪些文件都需要进行一次全局扫描，还是不够节约时间，也没办法阻止粗心的人将含有es6代码提交到远程仓库，令人头大，这可怎么办呢？<br>husky与lint-staged的加入<br>husky 是一个 Git Hook 工具。本文主要实现提交前 eslint 校验和 commit 信息的规范校验，可以防止使用 Git hooks 的一些不好的 commit 或者 push。</p>
+<p>lint-staged 是一个在git暂存文件上运行linters的工具，当然如果你觉得每次修改一个文件就给所有文件执行一次lint检查不恶心的话，这个工具对你来说就没有什么意义了，请直接关闭即可。它将根据package.json依赖项中的代码质量工具来安装和配置husky和lint-staged，因此请确保在此之前安装（npm install –save-dev）并配置所有代码质量工具，如ESlint。</p>
+<p>这两个可是两个神器，组合起来可大有威能。我们可以在lint-staged里使用es-check命令，接到获得改变的文件，从而只检测我们修改的文件。而在husky里的‘pre-commit’的钩子里，我们可以就这么愉快的使用lint-staged了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;husky&quot;: &#123;</span><br><span class="line">   &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"> &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;*.js&quot;: &quot;es-check es5&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>黑名单的问题还是没有解决。</p>
+<p>es6-killer诞生<br>为了解决黑名单配置问题，以及全局扫描和commit扫描的问题，我打算将此插件进行二次封装，并且开源使用。</p>
+<p>首先是黑名单配置问题：</p>
+<p>我设置了.escheckignore文件来配置要忽略的文件，而使用该插件的人也可以灵活的配置他们想要忽略的文件列表，不再用一个一个去塞，如果不配置该文件，我默认忽略node_modules，不用再扫描时一大堆es6检测结果报错。</p>
+<p>而全局与commit时的扫描也做了分明处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;es-check&quot;: &quot;node node_modules&#x2F;es6-killer&#x2F;index.js&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>这里配置好后可以使用npm run es-check进行全局扫描检测es6语法，当然忽略了你的.escheckignore里的文件列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;husky&quot;: &#123;</span><br><span class="line">    &quot;hooks&quot;: &#123;</span><br><span class="line">    &quot;pre-commit&quot;: &quot;lint-staged&quot;,</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"> &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;*.js&quot;: &quot;node node_modules&#x2F;es6-killer&#x2F;index.js&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>  这里配置好后将会在你修改好文件准备git commit时，调用钩子检测你的语法是否合乎规范，如果有es6语法，就会阻止本次commit提交。</p>
+<p>到此，基本任务告一段落，实现了对项目es6语法的检验，也可以成功给项目布上忽略黑名单，欢迎您来使用。</p>
+<p>Filez前端技术团队</p>
+<p>无所畏惧，有所敬畏</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">七仔</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/12/01/es6-killer---%E5%88%AB%E8%AE%A9es6%E6%AF%81%E4%BA%86%E4%BD%A0%E7%9A%84%E8%80%81%E9%A1%B9%E7%9B%AE/">http://example.com/2020/12/01/es6-killer---%E5%88%AB%E8%AE%A9es6%E6%AF%81%E4%BA%86%E4%BD%A0%E7%9A%84%E8%80%81%E9%A1%B9%E7%9B%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">七仔のBLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/es6/">es6</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/27/MecWBAdu2yGxog1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/22/vue-i18n%E7%9A%84%E8%B0%83%E7%A0%94/"><img class="prev-cover" src="https://i.loli.net/2021/02/24/Hqah1IoB9CJYvcP.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vue-i18n延迟加载翻译的调研</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/25/%E5%AE%9E%E4%B9%A0%E7%BB%8F%E5%8E%86/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/100.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">联想云网盘实习经历</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2021/01/24/EK2LdqGmYbTNoOQ.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">七仔</div><div class="author-info__description">一无所知的世界 走下去才会有惊喜</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sixpeny"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/sixpeny" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_45841267" target="_blank" title="CSDN"><i class="iconfont icon-csdn"></i></a><a class="social-icon" href="https://paypal.me/liaolongteng?locale.x=zh_XC" target="_blank" title="Paypal"><i class="fab fa-paypal"></i></a><a class="social-icon" href="https://www.zhihu.com/people/sixpenny-99" target="_blank" title="知乎"><i class="iconfont icon-zhihu"></i></a><a class="social-icon" href="https://gitee.com/liaolongtengaa" target="_blank" title="Gitee"><i class="fab fa-github-alt"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到前端小白七仔的博客<img src="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/15.gif"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#es6-killer%E2%80%94%E5%88%AB%E8%AE%A9es6%E6%AF%81%E4%BA%86%E4%BD%A0%E7%9A%84%E8%80%81%E9%A1%B9%E7%9B%AE%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">es6-killer—别让es6毁了你的老项目！！！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/22/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" title="毕业设计-微信小程序"><img src="https://i.loli.net/2021/02/01/aIOmNq8j7KFXMRo.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'" alt="毕业设计-微信小程序"/></a><div class="content"><a class="title" href="/2021/02/22/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" title="毕业设计-微信小程序">毕业设计-微信小程序</a><time datetime="2021-02-22T00:56:31.000Z" title="发表于 2021-02-22 08:56:31">2021-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/26/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/" title="vue I18n优化vue全家桶电商管理系统项目"><img src="https://i.loli.net/2021/02/27/aiq7Spl9DcKGYgh.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'" alt="vue I18n优化vue全家桶电商管理系统项目"/></a><div class="content"><a class="title" href="/2021/01/26/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/" title="vue I18n优化vue全家桶电商管理系统项目">vue I18n优化vue全家桶电商管理系统项目</a><time datetime="2021-01-25T16:58:39.000Z" title="发表于 2021-01-26 00:58:39">2021-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/22/vue%E9%A1%B9%E7%9B%AE/" title="vue全家桶电商管理系统项目"><img src="https://i.loli.net/2021/02/22/pKXtcRB58GQ4DM1.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'" alt="vue全家桶电商管理系统项目"/></a><div class="content"><a class="title" href="/2021/01/22/vue%E9%A1%B9%E7%9B%AE/" title="vue全家桶电商管理系统项目">vue全家桶电商管理系统项目</a><time datetime="2021-01-22T00:56:09.000Z" title="发表于 2021-01-22 08:56:09">2021-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/22/leetcode/" title="leetcode"><img src="/img/3.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'" alt="leetcode"/></a><div class="content"><a class="title" href="/2021/01/22/leetcode/" title="leetcode">leetcode</a><time datetime="2021-01-22T00:54:05.000Z" title="发表于 2021-01-22 08:54:05">2021-01-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/01/12/%E5%85%B3%E4%BA%8E%E5%89%8D%E7%AB%AF%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="关于前端的计算机网络"><img src="https://i.loli.net/2021/02/22/GDRuoAOacfr4LBY.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/404.jpg'" alt="关于前端的计算机网络"/></a><div class="content"><a class="title" href="/2021/01/12/%E5%85%B3%E4%BA%8E%E5%89%8D%E7%AB%AF%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="关于前端的计算机网络">关于前端的计算机网络</a><time datetime="2021-01-12T00:56:31.000Z" title="发表于 2021-01-12 08:56:31">2021-01-12</time></div></div></div></div></div><div class="card-widget card-pixiv"><div class="card-content"><div class="item-headline"><i class="fa fa-image" aria-hidden="true"></i><span>Pixiv日榜Top50</span><iframe src="https://cloud.mokeyjay.com/pixiv" frameborder="0" style="width:99%;height:380px;margin:0;"></iframe></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/sixpeny/CDN1@2.0/img/lia.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021<i id="heartbeat" class="fa fas fa-heartbeat"></i> 七仔</div><div id="workboard"></div><script async="async" src="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@3.0/addJS/runti.js"></script><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender"/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr"/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel"/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris"/></a></p></div><head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css">
+</head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: '',
+      appKey: 'cI3It3JyT9wjQSCWndPGvhSN',
+      placeholder: '记得留下你的足迹吧！',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign({}, initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script data-pjax src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script data-pjax src="https://player.lmih.cn/player/js/player.js" id="myhk" key="161250919795" m="1"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/fz6m/china-lantern@1.6/dist/china-lantern.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/sixpeny/CDN1@4.0/addJS/botui.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="-"]):not([href="/"]):not([href="s"]):not([href="h"]):not([href="u"]):not([href="o"]):not([href="s"]):not([href="h"]):not([href="u"]):not([href="o"]):not([href="/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

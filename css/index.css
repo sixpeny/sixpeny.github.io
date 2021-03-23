@@ -3111,16 +3111,16 @@ span.categoryBar-list-count::after {
   right: -100%;
 }
 li.categoryBar-list-item:nth-child(1) {
-  background: url('https://cdn.jsdelivr.net/gh/Akilarlxh/Akilarlxh.github.io@v3.3.3_2/img/cover1.webp');
+  background: url('https://cdn.jsdelivr.net/gh/sixpeny/CDN1@7.0/img2/index1.jpg');
 }
 li.categoryBar-list-item:nth-child(2) {
-  background: url('https://cdn.jsdelivr.net/gh/Akilarlxh/Akilarlxh.github.io@v3.3.3_2/img/cover2.webp');
+  background: url('https://cdn.jsdelivr.net/gh/sixpeny/CDN1@7.0/img2/34.jpg');
 }
 li.categoryBar-list-item:nth-child(3) {
-  background: url('https://cdn.jsdelivr.net/gh/Akilarlxh/Akilarlxh.github.io@v3.3.3_2/img/cover3.webp');
+  background: url('https://cdn.jsdelivr.net/gh/sixpeny/CDN1@7.0/img2/index3.jpg');
 }
 li.categoryBar-list-item:nth-child(4) {
-  background: url('https://cdn.jsdelivr.net/gh/Akilarlxh/Akilarlxh.github.io@v3.3.3_2/img/cover4.webp');
+  background: url('https://cdn.jsdelivr.net/gh/sixpeny/CDN1@7.0/img2/index4.jpg');
 }
 li.categoryBar-list-item:nth-child(5) {
   background: #abcdef;
@@ -3136,7 +3136,7 @@ li.categoryBar-list-item:nth-child(7) {
   background: linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
 }
 li.categoryBar-list-item:nth-child(1)>span::after {
-  content: 'hexo+butterfly博客搭建过程' !important;
+  content: '博客搭建过程' !important;
 }
 li.categoryBar-list-item:nth-child(2)>span::after {
   content: '一段实习经历' !important;

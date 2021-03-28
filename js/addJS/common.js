@@ -1,37 +1,50 @@
 
-// 手机侧边栏默认不展开
-var mobile_sidebar_menus = document.getElementById("mobile-sidebar-menus");
-var menus_item_child = mobile_sidebar_menus.getElementsByClassName(
-    "menus_item_child"
-);
-var menus_expand = mobile_sidebar_menus.getElementsByClassName("menus-expand");
-for (var i = 0; i < menus_item_child.length; i++) {
-    menus_item_child[i].style.display = "none";
-    menus_expand[i].className += " menus-closed";
+// 气泡
+function qipao() {
+    $('#page-header').circleMagic({
+        radius: 10,
+        density: .2,
+        color: 'rgba(255,255,255,.4)',
+        clearOffset: 0.99
+    });
+}! function(p) {
+    p.fn.circleMagic = function(t) {
+        var o, a, n, r, e = !0,
+            i = [],
+            d = p.extend({ color: "rgba(255,0,0,.5)", radius: 10, density: .3, clearOffset: .2 }, t),
+            l = this[0];
 
-}
+        function c() { e = !(document.body.scrollTop > a) }
 
+        function s() { o = l.clientWidth, a = l.clientHeight, l.height = a + "px", n.width = o, n.height = a }
 
-// 浏览器搞笑标题
-var OriginTitle = document.title;
-var titleTime;
-document.addEventListener('visibilitychange', function () {
-    if (document.hidden) {
-        $('[rel="icon"]').attr('href', "/funny.ico");
-        document.title = 'ヽ(●-`Д´-)ノ你要走嘛我好伤心！';
-        clearTimeout(titleTime);
+        function h() {
+            if (e)
+                for (var t in r.clearRect(0, 0, o, a), i) i[t].draw();
+            requestAnimationFrame(h)
+        }
+
+        function f() {
+            var t = this;
+
+            function e() { t.pos.x = Math.random() * o, t.pos.y = a + 100 * Math.random(), t.alpha = .1 + Math.random() * d.clearOffset, t.scale = .1 + .3 * Math.random(), t.speed = Math.random(), "random" === d.color ? t.color = "rgba(" + Math.floor(255 * Math.random()) + ", " + Math.floor(0 * Math.random()) + ", " + Math.floor(0 * Math.random()) + ", " + Math.random().toPrecision(2) + ")" : t.color = d.color }
+            t.pos = {}, e(), this.draw = function() { t.alpha <= 0 && e(), t.pos.y -= t.speed, t.alpha -= 5e-4, r.beginPath(), r.arc(t.pos.x, t.pos.y, t.scale * d.radius, 0, 2 * Math.PI, !1), r.fillStyle = t.color, r.fill(), r.closePath() }
+        }! function() {
+            o = l.offsetWidth, a = l.offsetHeight,
+                function() {
+                    var t = document.createElement("canvas");
+                    t.id = "canvas", t.style.top = 0, t.style.zIndex = 0, t.style.position = "absolute", l.appendChild(t), t.parentElement.style.overflow = "hidden"
+                }(), (n = document.getElementById("canvas")).width = o, n.height = a, r = n.getContext("2d");
+            for (var t = 0; t < o * d.density; t++) {
+                var e = new f;
+                i.push(e)
+            }
+            h()
+        }(), window.addEventListener("scroll", c, !1), window.addEventListener("resize", s, !1)
     }
-    else {
-        $('[rel="icon"]').attr('href', "/favicon.ico");
-        document.title = '(Ő∀Ő3)ノ哇喔！欢迎！' + OriginTitle;
-        titleTime = setTimeout(function () {
-            document.title = OriginTitle;
-        }, 2000);
-    }
-});
+}(jQuery);
 
-// 添加八毛卡通人物
-/*右下角添加卡通人物*/
-var bamao = '<i class="fas fa-arrow-up" style ="padding:8px" ></i><img style="max-width: 234%;transform: translate(-65px,-65px);" src="https://cdn.jsdelivr.net/gh/fudalijunyi/picture-bed/img/20200629182853.gif" title="回到顶部" data-ll-status="loaded" class="loaded">';
-/*添加到返回顶部按钮下*/
-document.getElementById("go-up").innerHTML = bamao
+// 调用气泡方法
+qipao();
+
+

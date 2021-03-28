@@ -13,4 +13,20 @@ a#site-name {
     font-family:arzhu!important
 }
 
+/* 主页半透明度 */
+.layout_page {
+    opacity: 0.9;
+  }
 
+
+  /* 阅读模式 */
+.read-mode {
+    /* 字体大小 */
+    font-size: 17px;
+    /* 可以在这里引入自定义字体，具体方法请自行百度css引入字体 */
+  }
+
+  /* 头像点击特效 */
+.card-info-avatar:hover {
+    background: url(https://gitee.com/lovelijunyi/images/raw/master/20200530181856.gif);
+  }

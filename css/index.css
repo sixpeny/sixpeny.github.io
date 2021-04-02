@@ -3123,12 +3123,15 @@ li.categoryBar-list-item:nth-child(4) {
   background: url('https://cdn.jsdelivr.net/gh/sixpeny/CDN1@7.0/img2/index4.jpg');
 }
 li.categoryBar-list-item:nth-child(5) {
-  background: #abcdef;
+  background: url('https://cdn.jsdelivr.net/gh/sixpeny/CDN1@7.0/img2/index2.jpg');
 }
 li.categoryBar-list-item:nth-child(6) {
-  background: rgba(45,67,89,0.7);
+  background: #abcdef;
 }
 li.categoryBar-list-item:nth-child(7) {
+  background: rgba(45,67,89,0.7);
+}
+li.categoryBar-list-item:nth-child(8) {
   background: -webkit-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
   background: -moz-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
   background: -o-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
